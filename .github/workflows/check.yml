@@ -1,0 +1,58 @@
+name: Check
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  ruff:
+    name: Ruff
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+
+      - run: pip install ruff
+
+      - run: ruff check
+
+      - run: ruff format --check
+
+  mypy:
+    name: MyPy
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+
+      - name: Install mypy
+        run: pip install mypy
+
+      - name: Run
+        run: mypy .
+
+  pytest:
+    name: Pytest
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+
+      - name: Install dev dependencies
+        run: pip install pytest
+
+      - name: Run
+        run: pytest -v .
