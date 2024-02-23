@@ -28,6 +28,6 @@ To install pre-commit hooks, run the following command:
 pre-commit install
 ```
 
-Pre-commit hooks include ruff for linting and formatting of Python code, and prettier for other files.
+Pre-commit hooks include [ruff](https://github.com/astral-sh/ruff-pre-commit) for linting and formatting of Python code, and [prettier](https://prettier.io/docs/en/precommit.html) for other files (json/yaml/md).
 
 GitHub Actions are set up to run checks and tests on every push to the repository. You can find the workflow file [here](.github/workflows/check.yml).
